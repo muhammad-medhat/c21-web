@@ -37,6 +37,16 @@ div#nav-logo {
 section.menu-category {
   display: flex;
   flex-direction: column;
+  &::before {
+    content: "نسخة تجريبية";
+    left: 50%;
+    bottom: -1px;
+    z-index: 99;
+    font-size: 3rem;
+    transform: translateY(0) skew(146deg, 41deg);
+    background: var(--elegant-border);
+    opacity: 0.5;
+  }
   a.move-top {
     align-self: end;
     font-size: var(--font-lg);

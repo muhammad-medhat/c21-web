@@ -104,8 +104,18 @@
   bottom: -1px;
   width: 90px;
   height: 2px;
+  font-size: 5rem;
   transform: translateX(-50%);
   background: var(--elegant-gold);
+}
+.header::before {
+  content: "نسخة تجريبية";
+    /* position: absolute; */
+    left: 50%;
+    width: 90px;
+    font-size: 3rem;
+    opacity: 0.5;
+}
 }
 .header__inner {
   max-width: 900px;
