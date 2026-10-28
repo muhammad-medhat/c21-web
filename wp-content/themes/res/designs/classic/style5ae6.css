@@ -20,6 +20,38 @@
   --classic-dotted: #c9a782;
   --classic-border: #e6d2bd;
 
+  /* .......................................................... */
+
+  /* Responsive typography system */
+  .menu-design--classic {
+    /* General text */
+    --fs-xs: clamp(0.7rem, 0.67rem + 0.12vw, 0.78rem);
+    --fs-sm: clamp(0.76rem, 0.72rem + 0.18vw, 0.85rem);
+    --fs-md: clamp(0.9rem, 0.9rem + 0.22vw, 1.2rem);
+    --fs-base: clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+    --fs-lg: clamp(1.05rem, 0.98rem + 0.35vw, 1.2rem);
+    --fs-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.65rem);
+    --fs-2xl: clamp(1.55rem, 2rem + 1.3vw, 2.5rem);
+
+    /* Menu-specific typography */
+    --fs-restaurant-name: var(--fs-2xl);
+    --fs-restaurant-description: var(--fs-md);
+    --fs-category-title: var(--fs-lg);
+    --fs-item-name: var(--fs-base);
+    --fs-item-price: var(--fs-md);
+    --fs-item-description: var(--fs-sm);
+    --fs-navigation: var(--fs-md);
+
+    /*     
+    --fs-variation-name: var(--fs-sm);
+    --fs-variation-price: var(--fs-sm);
+    --fs-badge: var(--fs-xs);
+    --fs-category-description: var(--fs-sm);
+    --fs-icon: var(--fs-lg); */
+  }
+
+  /* .......................................................... */
+
   box-sizing: border-box;
   width: 100%;
   min-height: 100vh;
@@ -38,6 +70,21 @@
   box-sizing: border-box;
 }
 /* ******************************************** */
+/* prettier-ignore */
+.menu-design--classic {
+  /* typography */
+  .header__name { font-size: var(--fs-restaurant-name); }
+  .header__description {font-size: var(--fs-restaurant-description);}
+  a.category-link  { font-size: var(--fs-navigation); }
+  .classic-category__title { font-weight: 800;font-size: var(--fs-category-title); }
+  .item__description{font-weight: 700;}
+  .variation-description{font-weight: 500;}
+  .item__description,
+  .variation-description {
+    font-size: var(--fs-item-description);
+  }
+  .item__price{font-weight: 800;font-size: var(--fs-item-price);}
+}
 
 .menu-design--classic .menu-name-ar,
 .menu-design--classic .menu-description-ar,
@@ -61,10 +108,6 @@
   font-weight: 700;
 }
 
-.menu-design--classic .item__description,
-.menu-item-variation .variation-description {
-  font-weight: 400;
-}
 /* ******************************************** */
 .menu-design--classic img {
   max-width: 100%;
@@ -222,18 +265,6 @@
   overflow-wrap: anywhere;
 }
 
-.menu-design--classic .item__price {
-  flex-shrink: 0;
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-
-.menu-design--classic .item__description,
-.menu-design--classic .variation-description {
-  font-size: 0.76rem;
-  overflow-wrap: anywhere;
-}
-
 /* =========================================
    TABLET AND DESKTOP: 2 COLUMNS
    ========================================= */
@@ -318,8 +349,8 @@ html[lang="en"] .classic-category__heading {
   min-width: 0;
   margin: 0;
   color: inherit;
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
-  font-weight: 800;
+  /* font-size: clamp(1rem, 1.4vw, 1.15rem); */
+  /* font-weight: 800; */
   line-height: 1.45;
 }
 
@@ -373,6 +404,7 @@ html[lang="en"] .classic-category__heading {
   color: var(--classic-muted);
   font-size: 0.85rem;
   line-height: 1.6;
+  text-align: start;
 }
 
 .menu-design--classic .classic-category__description p {
@@ -429,14 +461,31 @@ html[lang="en"] .classic-category__heading {
 }
 
 .menu-design--classic .item__price {
+  display: flex;
   flex: 0 0 auto;
   color: var(--classic-gold);
-  font-size: 0.94rem;
-  font-weight: 800;
   line-height: 1.6;
   white-space: nowrap;
+  text-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.08);
 }
-
+/* displaying the currency after price  */
+.item__price::after {
+  display: none;
+  content: "egp";
+  text-transform: uppercase;
+  vertical-align: super;
+  font-size: xx-small;
+  /* font-variant-position: super; */
+}
+html[lang="en"] .item__price::after {
+  display: inline;
+}
+html[lang="ar"] .item__price {
+  flex-direction: row-reverse;
+}
+html[lang="ar"] .item__price::after {
+  display: inline;
+}
 /* Dotted line between the item name and price */
 
 .menu-design--classic .menu-item__dots {
@@ -452,6 +501,7 @@ html[lang="en"] .classic-category__heading {
   /* border: solid red; */
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 /* Prevent inherited product-image styles from showing item photos. */
@@ -466,7 +516,7 @@ html[lang="en"] .classic-category__heading {
 .menu-design--classic .item__description {
   margin: 2px 0 0;
   color: var(--classic-muted);
-  font-size: 0.78rem;
+  /* font-size: 0.78rem; */
   line-height: 1.55;
 }
 
@@ -607,7 +657,7 @@ html[lang="en"] .menu-design--classic .restaurant-description-en {
   border-radius: 6px;
   background: transparent;
   color: var(--classic-brown);
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
@@ -693,6 +743,10 @@ a.category-link.active img {
 }
 /* 15. COMPACT CATEGORIES
    --------------------------------------------------------- */
+section.category--compact .item__description {
+  border: solid red;
+  display: none;
+}
 
 .menu-design--classic .classic-category--compact {
   margin-bottom: 22px;
@@ -714,9 +768,9 @@ a.category-link.active img {
     gap: 24px;
   }
 
-  .menu-design--classic .classic-category__title {
+  /* .menu-design--classic .classic-category__title {
     font-size: 1rem;
-  }
+  } */
 
   .menu-design--classic .item__name {
     font-size: 0.92rem;
@@ -775,15 +829,6 @@ a.category-link.active img {
 
   .menu-design--classic .item__name {
     font-size: 0.95rem;
-  }
-
-  .menu-design--classic .item__price {
-    font-size: 0.9rem;
-  }
-
-  .menu-design--classic .item__description,
-  .menu-design--classic .variation-description {
-    font-size: 0.76rem;
   }
 }
 
@@ -847,18 +892,6 @@ a.category-link.active img {
 .menu-design--classic .item__name {
   overflow-wrap: anywhere;
   font-size: 0.95rem;
-}
-
-.menu-design--classic .item__price {
-  flex-shrink: 0;
-  white-space: nowrap;
-  font-size: 0.9rem;
-}
-
-.menu-design--classic .item__description,
-.menu-design--classic .variation-description {
-  overflow-wrap: anywhere;
-  font-size: 0.76rem;
 }
 
 /* Tablet and desktop: 2 columns */
