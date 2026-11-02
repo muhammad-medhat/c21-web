@@ -39,10 +39,6 @@ html[lang="en"] section.menu-category::before {
     1px 1px 0 #000;
 }
 /* main.menu__content::before { */
-/*  {
- */
-/* .menu-design--classic, */
 body > div.menu-design.menu-design--classic > div > main {
-  /* body { */
-  background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.3);
 }
